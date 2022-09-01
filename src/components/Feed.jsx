@@ -4,6 +4,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import { Videos, Sidebar } from "./";
 
 const Feed = () => {
+  const [selectedCategory, setSelectedCategory] = useState("New");
+
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box
@@ -13,7 +15,10 @@ const Feed = () => {
           px: { sx: 0, md: 2 },
         }}
       >
-        <Sidebar />
+        <Sidebar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
 
         <Typography
           className="copyright"
@@ -31,7 +36,7 @@ const Feed = () => {
           mb={2}
           sx={{ color: "white" }}
         >
-          Category <span style={{ color: "#FC1503" }}>videos</span>
+          {selectedCategory} <span style={{ color: "#FC1503" }}>videos</span>
         </Typography>
 
         <Videos />
